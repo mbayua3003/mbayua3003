@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Profil Fotografer - Versi Alternatif</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Mulish', sans-serif;
+    background: #f0f4f8;
+    color: #2c3e50;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header {
+    width: 100%;
+    background: linear-gradient(90deg, #1a237e, #ff6f61);
+    color: white;
+    padding: 2.5rem 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(26, 35, 126, 0.6);
+  }
+  header h1 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 2.7rem;
+    letter-spacing: 2px;
+    line-height: 1.15;
+  }
+  header p {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.3rem;
+    opacity: 0.9;
+  }
+
+  main {
+    width: 100%;
+    max-width: 1000px;
+    margin: 3rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  /* Gallery Section */
+  section.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 1.8rem;
+  }
+  section.gallery h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 1rem 0;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #1a237e;
+    text-align: center;
+  }
+  section.gallery figure {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(26, 35, 126, 0.2);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  section.gallery figure:focus-within,
+  section.gallery figure:hover {
+    transform: scale(1.07);
+    box-shadow: 0 12px 30px rgba(26, 35, 126, 0.5);
+    outline: none;
+  }
+  section.gallery img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+  }
+  section.gallery figure:hover img,
+  section.gallery figure:focus-within img {
+    transform: scale(1.08);
+  }
+  section.gallery figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(26, 35, 126, 0.75);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(100%);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    user-select: none;
+  }
+  section.gallery figure:hover figcaption,
+  section.gallery figure:focus-within figcaption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Profile Section */
+  section.profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 28px rgba(26, 35, 126, 0.12);
+  }
+  section.profile img {
+    width: 280px;
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(255, 111, 97, 0.3);
+    border: 5px solid #ff6f61;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  section.profile img:hover,
+  section.profile img:focus {
+    outline: none;
+    transform: scale(1.04);
+    box-shadow: 0 12px 35px rgba(255, 111, 97, 0.6);
+    cursor: pointer;
+  }
+  section.profile .description {
+    max-width: 600px;
+    flex: 1 1 300px;
+  }
+  section.profile .description h2 {
+    margin: 0 0 1rem 0;
+    font-size: 2.15rem;
+    color: #1a237e;
+    font-weight: 700;
+  }
+  section.profile .description p {
+    font-size: 1.15rem;
+    color: #444;
+    line-height: 1.55;
+  }
+
+  footer {
+    background: #1a237e;
+    padding: 1.5rem 1rem;
+    color: white;
+    text-align: center;
+    font-size: 1.1rem;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+  footer nav a {
+    color: #ff988a;
+    margin: 0 1.2rem;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  footer nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background: #ff988a;
+    transition: width 0.3s ease;
+  }
+  footer nav a:hover,
+  footer nav a:focus {
+    color: #ff6f61;
+    outline: none;
+  }
+  footer nav a:hover::after,
+  footer nav a:focus::after {
+    width: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    header p {
+      font-size: 1.1rem;
+    }
+    main {
+      margin: 2rem 1rem 3rem;
+      gap: 2.5rem;
+    }
+    section.gallery {
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.2rem;
+    }
+    section.gallery h2 {
+      font-size: 1.75rem;
+    }
+    section.gallery img {
+      height: 130px;
+    }
+    section.profile {
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+    section.profile img {
+      margin-bottom: 1.3rem;
+      width: 240px;
+      height: auto;
+    }
+    section.profile .description h2 {
+      font-size: 1.7rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Bayu Aryanto</h1>
+  <p>Fotografer Profesional & Seniman Visual</p>
+</header>
+
+<main>
+  <section class="gallery" aria-label="Galeri karya foto Bayu Aryanto">
+    <h2>Galeri Karya</h2>
+    <figure tabindex="0">
+      <img src="tumbuhan 1 - Copy.jpeg" alt="hewan 3.jpeg" />
+      <figcaption>Bunga matahari</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="hewan 1 - Copy.jpeg" alt="Potret wanita di cahaya matahari" />
+      <figcaption>Ular hijau</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="tumbuhan 2 - Copy.jpeg" alt="Foto alam dengan pohon dan kabut" />
+      <figcaption>Bunga indah</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="hewan 2 - Copy.jpeg" alt="Foto urban di malam hari" />
+      <figcaption>Burung hantu</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="tumbuhan 3.jpeg" alt="Foto makanan artistik" />
+      <figcaption>Bunga bangkai</figcaption>
+    </figure>
+    <figure tabindex="0">
+      <img src="hewan 3.jpeg" alt="Potret anak-anak bermain" />
+      <figcaption>Jenis monyet langka</figcaption>
+    </figure>
+  </section>
+
+  <section class="profile" aria-label="Profil fotografer">
+    <img 
+      src="foto profil .jpg" 
+      alt="Foto John Doe" 
+      tabindex="0"
+    />
+    <div class="description">
+      <h2>Tentang Bayu Aryanto</h2>
+      <p>
+         Saya Bayu Aryanto, fotografer yang berfokus pada flora dan fauna. Alam selalu menjadi sumber ketertarikan dan inspirasi bagi saya. Melalui fotografi, saya mencoba menangkap keindahan dan keunikan kehidupan liar—dari detail kecil tumbuhan hingga momen langka perilaku satwa.
+Bagi saya, setiap foto adalah cara bercerita dan mengajak orang lain untuk lebih peduli terhadap alam. Harapan saya, karya-karya ini bisa menjadi pengingat bahwa keindahan alam layak untuk dikenali, dihargai, dan dijaga bersama.
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <nav aria-label="Tautan media sosial John Doe">
+    <a href="https://instagram.com/qbayyy" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </nav>
+</footer>
+
+</body>
+</html>
