@@ -1,0 +1,62 @@
+/* Reset dasar untuk menghilangkan margin dan padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Gaya umum untuk body */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* Gaya untuk kontainer utama */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Gaya untuk gambar */
+img {
+  max-width: 100%; /* Membuat gambar responsif */
+  height: auto; /* Mempertahankan rasio aspek gambar */
+  display: block; /* Menghilangkan spasi di bawah gambar */
+}
+
+/* Gaya untuk teks */
+h1, h2, h3 {
+  margin-bottom: 15px;
+}
+
+/* Media Queries untuk perangkat kecil */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Mengurangi padding pada perangkat kecil */
+  }
+  h1 {
+    font-size: 1.8rem; /* Mengurangi ukuran font untuk judul */
+  }
+  h2 {
+    font-size: 1.5rem; /* Mengurangi ukuran font untuk subjudul */
+  }
+  p {
+    font-size: 1rem; /* Mengurangi ukuran font untuk paragraf */
+  }
+}
+
+/* Media Queries untuk perangkat sangat kecil */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem; /* Ukuran font lebih kecil untuk perangkat sangat kecil */
+  }
+  h2 {
+    font-size: 1.3rem; /* Ukuran font lebih kecil untuk subjudul */
+  }
+  p {
+    font-size: 0.9rem; /* Ukuran font lebih kecil untuk paragraf */
+  }
+}
