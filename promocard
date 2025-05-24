@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PromoCard Lucu & Unik Pastel Neon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffecf7, #d6f0f8);
+      font-family: 'Fredoka One', cursive, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      user-select: none;
+    }
+
+    /* Card container */
+    .promo-card {
+      background: #f9f1ff;
+      border-radius: 2rem;
+      box-shadow:
+        0 5px 15px rgba(221, 142, 240, 0.5),
+        inset 0 0 30px #d294f9cc;
+      max-width: 360px;
+      text-align: center;
+      padding-bottom: 2.8rem;
+      position: relative;
+      border: 4px solid #d391f9;
+      animation: slowWiggle 6s ease-in-out infinite;
+      cursor: default;
+    }
+
+    @keyframes slowWiggle {
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(2deg);
+      }
+
+      75% {
+        transform: rotate(-2deg);
+      }
+    }
+
+    /* Floating glowing highlight around card */
+    .promo-card::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      border-radius: 2.5rem;
+      pointer-events: none;
+      border: 4px solid #eb83ff;
+      filter: drop-shadow(0 0 15px #d391f9);
+      animation: pastelGlowPulse 4s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes pastelGlowPulse {
+      0% {
+        border-color: #eb83ff;
+        filter: drop-shadow(0 0 10px #d391f9);
+        opacity: 0.8;
+      }
+
+      50% {
+        border-color: #d391f9;
+        filter: drop-shadow(0 0 30px #eb83ff);
+        opacity: 1;
+      }
+
+      100% {
+        border-color: #eb83ff;
+        filter: drop-shadow(0 0 10px #d391f9);
+        opacity: 0.8;
+      }
+    }
+
+    /* Image style */
+    .promo-card img {
+      width: 100%;
+      border-radius: 2rem 2rem 0 0;
+      object-fit: cover;
+      filter: drop-shadow(0 0 10px #a070dcaa);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease, filter 0.4s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .promo-card img:hover {
+      transform: scale(1.07) rotate(3deg);
+      filter: drop-shadow(0 0 20px #c1a3ffcc);
+    }
+
+    /* Card content */
+    .promo-card-content {
+      padding: 2rem 1.5rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Title */
+    .promo-card-title {
+      font-size: 2rem;
+      color: #bf75ff;
+      text-shadow:
+        0 0 6px #eb83ff,
+        0 0 12px #d180f9;
+      margin-bottom: 1rem;
+      user-select: text;
+      cursor: default;
+      letter-spacing: 0.08em;
+    }
+
+    /* Funny tagline */
+    .tagline {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #a980ffcc;
+      margin-bottom: 2rem;
+      user-select: text;
+      text-shadow: 0 0 8px #d1b4ffcc;
+      cursor: default;
+    }
+
+    /* Neon pastel button */
+    .btn {
+      background: linear-gradient(45deg, #de91ff, #ae62ff);
+      border-radius: 3rem;
+      padding: 1rem 3rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+      border: 3px solid #b386ff;
+      text-shadow: 0 0 5px #d8a7ff;
+      box-shadow:
+        0 0 12px #c3a7ffcc,
+        0 0 35px #d693ffbb;
+      cursor: pointer;
+      display: inline-block;
+      user-select: none;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      animation: bounceButton 3s ease-in-out infinite;
+      text-decoration: none;
+    }
+
+    @keyframes bounceButton {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background: linear-gradient(45deg, #b370ff, #9662ff);
+      box-shadow:
+        0 0 30px #a373ff,
+        0 0 65px #b380ff;
+      outline: none;
+      transform: scale(1.15);
+      text-shadow: 0 0 18px #d3aaff;
+    }
+  </style>
+</head>
+
+<body>
+  <article class="promo-card" role="region" aria-label="Promo Card Lucu dan Unik Pastel Neon">
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Ilustrasi Promo Lucu Unik" />
+    <div class="promo-card-content">
+      <h2 class="promo-card-title">Promo Spesial Lucu & Unik!</h2>
+      <p class="tagline">✨ Jangan sampai dilewatkan yaa, buruan daftar... atau kucingmu yang rugi! 🐱🎉</p>
+      <a href="#" class="btn" role="button" tabindex="0" aria-label="Daftar Sekarang">Daftar Sekarang</a>
+    </div>
+  </article>
+</body>
+
+</html>
